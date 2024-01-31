@@ -20,7 +20,7 @@ class WeatherForecastScreen extends StatefulWidget {
 
 class _WeatherForecastScreenState extends State<WeatherForecastScreen> {
   Future<WeatherForecast>? forecastObject;
-  String _cityName = 'London';
+  String? _cityName;
 
   @override
   void initState() {
@@ -28,10 +28,6 @@ class _WeatherForecastScreenState extends State<WeatherForecastScreen> {
     if (widget.locationWeather != null) {
       forecastObject = Future.value(widget.locationWeather);
     }
-
-    // forecastObject!.then((value) {
-    //   print(value.list![0].weather![0].main);
-    // });
   }
 
   @override
@@ -44,6 +40,7 @@ class _WeatherForecastScreenState extends State<WeatherForecastScreen> {
           style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
+        automaticallyImplyLeading: false,
         leading: IconButton(
             onPressed: () {
               setState(() {
@@ -92,11 +89,14 @@ class _WeatherForecastScreenState extends State<WeatherForecastScreen> {
                     );
                   } else {
                     return const Center(
-                      child: SpinKitDoubleBounce(
-                        color: Colors.black87,
-                        size: 100,
-                      ),
-                    );
+                        // child: SpinKitDoubleBounce(
+                        //   color: Colors.black87,
+                        //   size: 100,
+                        child: Text(
+                      'City not found\nPlease enter correct city',
+                      style: TextStyle(fontSize: 35),
+                      textAlign: TextAlign.center,
+                    ));
                   }
                 }),
           )

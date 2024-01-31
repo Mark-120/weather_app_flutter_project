@@ -14,17 +14,21 @@ class LocationScreen extends StatefulWidget {
 
 class _LocationScreenState extends State<LocationScreen> {
   void getLocationData() async {
-    var weatherInfo = await WeatherApi().fetchWeatherForecast();
+    try {
+      var weatherInfo = await WeatherApi().fetchWeatherForecast();
 
-    if (weatherInfo == null) {
-      log('weatherInfo is null!');
+      if (weatherInfo == null) {
+        log('weatherInfo is null!');
+      }
+
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return WeatherForecastScreen(
+          locationWeather: weatherInfo,
+        );
+      }));
+    } catch (e) {
+      throw 'In getLocationData something went wrong: $e';
     }
-
-    Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return WeatherForecastScreen(
-        locationWeather: weatherInfo,
-      );
-    }));
   }
 
   @override
