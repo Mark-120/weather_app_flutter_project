@@ -5,6 +5,7 @@ import 'package:weather_app_flutter_project/widgets/city_view.dart';
 import 'package:weather_app_flutter_project/widgets/temp_view.dart';
 
 import '../models/weather_forecast_daily.dart';
+import '../widgets/detail_view.dart';
 
 class WeatherForecastScreen extends StatefulWidget {
   const WeatherForecastScreen({super.key});
@@ -50,7 +51,9 @@ class _WeatherForecastScreenState extends State<WeatherForecastScreen> {
                   SizedBox(height: 50,),
                   CityView(snapshot: snapshot),
                   SizedBox(height: 50),
-                  TempView(snapshot: snapshot)
+                  TempView(snapshot: snapshot),
+                  SizedBox(height: 50),
+                  DetailView(snapshot: snapshot),
                 ],
               );
             }
