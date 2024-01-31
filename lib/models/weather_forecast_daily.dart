@@ -1,3 +1,5 @@
+import 'package:weather_app_flutter_project/utilities/constants.dart';
+
 class WeatherForecast {
   City? city;
   String? cod;
@@ -168,6 +170,10 @@ class WeatherList {
     data['clouds'] = this.clouds;
     data['pop'] = this.pop;
     return data;
+  }
+
+  String getIconUrl() {
+    return '${Constants.WEATHER_IMAGES_URL}${weather![0].icon!}.png';
   }
 }
 

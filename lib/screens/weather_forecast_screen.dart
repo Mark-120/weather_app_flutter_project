@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app_flutter_project/api/weather_api.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:weather_app_flutter_project/widgets/city_view.dart';
+import 'package:weather_app_flutter_project/widgets/temp_view.dart';
 
 import '../models/weather_forecast_daily.dart';
 
@@ -21,9 +23,9 @@ class _WeatherForecastScreenState extends State<WeatherForecastScreen> {
     forecastObject =
         WeatherApi().fetchWeatherForecastWithCity(cityName: _cityName);
 
-    forecastObject!.then((value) {
-      print(value.list![0].weather![0].main);
-    });
+    // forecastObject!.then((value) {
+    //   print(value.list![0].weather![0].main);
+    // });
   }
 
   @override
@@ -43,7 +45,14 @@ class _WeatherForecastScreenState extends State<WeatherForecastScreen> {
         Container(
           child: FutureBuilder<WeatherForecast>(future: forecastObject, builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return Text("I've got data");
+              return Column(
+                children: [
+                  SizedBox(height: 50,),
+                  CityView(snapshot: snapshot),
+                  SizedBox(height: 50),
+                  TempView(snapshot: snapshot)
+                ],
+              );
             }
             else {
               return const Center(
