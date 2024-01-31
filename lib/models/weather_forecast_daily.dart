@@ -143,7 +143,7 @@ class WeatherList {
     deg = json['deg'];
     gust = json['gust'];
     clouds = json['clouds'];
-    pop = json['pop'];
+    pop = json['pop'].toInt();
   }
 
   Map<String, dynamic> toJson() {
