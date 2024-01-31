@@ -25,7 +25,7 @@ class BottomListView extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemBuilder: ((context, index) {
                 return Container(
-                  width: MediaQuery.of(context).size.width / 2.7,
+                  width: 180,
                   height: 160,
                   color: Colors.black87,
                   child: forecastCard(snapshot, index),

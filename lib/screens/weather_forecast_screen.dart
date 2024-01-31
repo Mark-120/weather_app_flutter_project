@@ -75,9 +75,7 @@ class _WeatherForecastScreenState extends State<WeatherForecastScreen> {
                   if (snapshot.hasData) {
                     return Column(
                       children: [
-                        SizedBox(
-                          height: 50,
-                        ),
+                        SizedBox(height: 25),
                         CityView(snapshot: snapshot),
                         SizedBox(height: 50),
                         TempView(snapshot: snapshot),
@@ -85,13 +83,11 @@ class _WeatherForecastScreenState extends State<WeatherForecastScreen> {
                         DetailView(snapshot: snapshot),
                         SizedBox(height: 50),
                         BottomListView(snapshot: snapshot),
+                        SizedBox(height: 25),
                       ],
                     );
                   } else {
                     return const Center(
-                        // child: SpinKitDoubleBounce(
-                        //   color: Colors.black87,
-                        //   size: 100,
                         child: Text(
                       'City not found\nPlease enter correct city',
                       style: TextStyle(fontSize: 35),
