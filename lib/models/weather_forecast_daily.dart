@@ -12,7 +12,7 @@ class WeatherForecast {
   WeatherForecast.fromJson(Map<String, dynamic> json) {
     city = json['city'] != null ? new City.fromJson(json['city']) : null;
     cod = json['cod'];
-    message = json['message'];
+    message = json['message'].toDouble();
     cnt = json['cnt'];
     if (json['list'] != null) {
       list = <WeatherList>[];
@@ -141,9 +141,9 @@ class WeatherList {
         weather!.add(new Weather.fromJson(v));
       });
     }
-    speed = json['speed'];
+    speed = json['speed'].toDouble();
     deg = json['deg'];
-    gust = json['gust'];
+    gust = json['gust'].toDouble();
     clouds = json['clouds'];
     pop = json['pop'].toInt();
   }
